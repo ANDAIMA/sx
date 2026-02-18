@@ -77,7 +77,7 @@
         
                 <ul class="breadcrumb">
             <li><a href="#index.html">Home</a> <span class="divider">/</span></li>
-            <li class="active">入款申请</li>
+            <li class="active">财务概况</li>
         </ul>
 <div class="copyrights">Collect from <a href=""  title="网站模板">系统官网</a></div>
         <div class="container-fluid">
