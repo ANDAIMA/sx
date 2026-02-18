@@ -3,64 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>双星名人集团电商经营总公司产品信息审核管理系统</title>
-    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
-    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
+    <title>双星名人集团电商经营总公司 - 产品信息审核管理系统</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        #header {
-            height: 41px;
-            background: #333;
-            color: white;
-            overflow: hidden;
-        }
-        #main-container {
-            display: flex;
-            height: calc(100vh - 49px);
-        }
-        #sidebar {
-            width: 240px;
-            overflow-y: auto;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background: #f5f5f5;
-            border-right: 1px solid #ddd;
         }
-        #content {
-            flex: 1;
-            overflow-y: auto;
+        .header {
+            background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        #footer {
-            height: 8px;
-            background: #333;
+        .header h1 { font-size: 24px; margin-bottom: 5px; }
+        .header p { opacity: 0.9; font-size: 14px; }
+        .nav {
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 0 20px;
+            display: flex;
+            overflow-x: auto;
+        }
+        .nav-item {
+            padding: 15px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+            color: #666;
+            text-decoration: none;
+        }
+        .nav-item:hover, .nav-item.active {
+            color: #3949ab;
+            border-bottom-color: #3949ab;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .card-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .menu-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+        .menu-item:hover {
+            background: #e3f2fd;
+            border-color: #3949ab;
+            transform: translateY(-2px);
+        }
+        .menu-item-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        .menu-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .menu-item-desc {
+            font-size: 12px;
+            color: #666;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #3949ab;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            color: #856404;
         }
         iframe {
             width: 100%;
-            height: 100%;
-            border: none;
+            height: 800px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
         }
     </style>
 </head>
 <body>
-    <div id="header">
-        <iframe src="top.aspx" name="topFrame" scrolling="no"></iframe>
+    <div class="header">
+        <h1>🏢 双星名人集团电商经营总公司</h1>
+        <p>产品信息审核管理系统 - 数据备份</p>
     </div>
-    <div id="main-container">
-        <div id="sidebar">
-            <iframe src="left.aspx" name="leftFrame" scrolling="auto"></iframe>
+
+    <div class="nav">
+        <a href="#home" class="nav-item active" onclick="showPage('home')">🏠 首页</a>
+        <a href="#shops" class="nav-item" onclick="showPage('shops')">🏪 授权店铺</a>
+        <a href="#products" class="nav-item" onclick="showPage('products')">👟 商品管理</a>
+        <a href="#orders" class="nav-item" onclick="showPage('orders')">📦 订单管理</a>
+        <a href="#finance" class="nav-item" onclick="showPage('finance')">💰 财务管理</a>
+        <a href="#quality" class="nav-item" onclick="showPage('quality')">✅ 质量管理</a>
+    </div>
+
+    <div class="container">
+        <div class="warning">
+            <strong>⚠️ 提示：</strong> 本页面为静态备份，部分动态功能（如搜索、提交）不可用。点击菜单项可查看对应页面内容。
         </div>
-        <div id="content">
-            <iframe src="ProductList_shencha.aspx" name="rightFrame"></iframe>
+
+        <!-- 首页 -->
+        <div id="home" class="page-content">
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">16</div>
+                    <div class="stat-label">授权店铺</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">619</div>
+                    <div class="stat-label">商品图片</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">388</div>
+                    <div class="stat-label">数据页面</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1007</div>
+                    <div class="stat-label">总文件数</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">📋 功能模块</div>
+                <div class="card-body">
+                    <div class="menu-grid">
+                        <a href="ShopList.aspx" class="menu-item" target="content-frame">
+                            <div class="menu-item-icon">🏪</div>
+                            <div class="menu-item-title">授权店铺</div>
+                            <div class="menu-item-desc">查看16家授权店铺信息</div>
+                        </a>
+                        <a href="ProductList.aspx" class="menu-item" target="content-frame">
+                            <div class="menu-item-icon">👟</div>
+                            <div class="menu-item-title">商品鞋列表</div>
+                            <div class="menu-item-desc">查看商品鞋数据（50页）</div>
+                        </a>
+                        <a href="ProductList_F.aspx" class="menu-item" target="content-frame">
+                            <div class="menu-item-icon">👕</div>
+                            <div class="menu-item-title">商品服列表</div>
+                            <div class="menu-item-desc">查看服装数据（20页）</div>
+                        </a>
+                        <a href="AgentOrders.aspx" class="menu-item" target="content-frame">
+                            <div class="menu-item-icon">📦</div>
+                            <div class="menu-item-title">订单列表</div>
+                            <div class="menu-item-desc">查看订单数据</div>
+                        </a>
+                        <a href="AgentBalanceLog.aspx" class="menu-item" target="content-frame">
+                            <div class="menu-item-icon">💰</div>
+                            <div class="menu-item-title">物料费账单</div>
+                            <div class="menu-item-desc">查看财务流水（30页）</div>
+                        </a>
+                        <a href="ZhiJianList.aspx" class="menu-item" target="content-frame">
+                            <div class="menu-item-icon">✅</div>
+                            <div class="menu-item-title">质量检测</div>
+                            <div class="menu-item-desc">查看质检记录</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">📄 页面预览</div>
+                <div class="card-body">
+                    <iframe name="content-frame" src="ShopList.aspx"></iframe>
+                </div>
+            </div>
         </div>
     </div>
-    <div id="footer">
-        <iframe src="down.html" name="bottomFrame" scrolling="no"></iframe>
-    </div>
-    
-    <script src="lib/jquery-1.7.2.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.js"></script>
+
+    <script>
+        function showPage(page) {
+            // 更新导航样式
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
